@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookies Set</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #0b0e14;
+            color: #ffffff;
+        }
+
+        button {
+            border-radius: 20px;
+            padding: 10px 20px;
+            background-color: #ff1f71;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+            button:hover {
+                background-color: #c31655;
+            }
+    </style>
+</head>
+<body>
+    <h2>Cookies have been set successfully!</h2>
+    <p>Your preferences have been saved.</p>
+    <a href="{% url 'home' %}">
+        <button class="button">Back to CineView</button>
+    </a>
+</body>
+</html>

@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/watchlist.css">
+    <title>Reviews for {{ film.title }}</title>
+</head>
+<body>
+    <main>
+        <div class="container">
+            <div class="btn"><a href="{% url 'home' %}">Home</a></div>
+            <div class="btn"><a href="{% url 'search_films' %}">Search</a></div>
+            <div class="btn"><a href="{% url 'add' %}">Add Review</a></div>
+            <div class="btn"><a href="{% url 'reviewlist' %}">Your Reviews</a></div>
+            <div class="btn"><a href="{% url 'view_watchlist' %}">Watchlist</a></div>
+            <div class="btn"><a href="{% url 'login' %}">Log Out</a></div>
+        </div>
+        <h1>My Watchlist</h1>
+        <div class="film-container">
+            {% for film in films %}
+            <div class="film-card">
+                <a href="{% url 'film_reviews' film.id %}">
+                    <img src="{{ film.image_url }}" alt="{{ film.title }}">
+                    <h3>{{ film.title }}</h3>
+                </a>
+                <a href="{% url 'remove_from_watchlist' film.id %}" class="btn btn-warning">Remove from Watchlist</a>
+            </div>
+            {% empty %}
+            <p>You have no films in your watchlist.</p>
+            {% endfor %}
+        </div>
+
+    </main>
+</body>
+</html>

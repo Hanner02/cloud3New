@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/reviewlist.css">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <div class="container">
+            <div class="btn"><a href="{% url 'home' %}">Home</a></div>
+            <div class="btn"><a href="{% url 'search_films' %}">Search</a></div>
+            <div class="btn"><a href="{% url 'add' %}">Add Review</a></div>
+            <div class="btn"><a href="{% url 'show' %}">Review List</a></div>
+            <div class="btn"><a href="{% url 'view_watchlist' %}">Watchlist</a></div>
+            <div class="btn"><a href="{% url 'login' %}">Log Out</a></div>
+        </div>
+        <h1>My Reviews</h1>
+        <form method="get" action="{% url 'sort' %}">
+            <label for="sort">Sort by:</label>
+            <select name="sort" id="sort" onchange="this.form.submit()">
+                <option value="date" {% if request.GET.sort == 'date' %}selected{% endif %}>Date</option>
+                <option value="title" {% if request.GET.sort == 'title' %}selected{% endif %}>Title</option>
+                <option value="rating" {% if request.GET.sort == 'rating' %}selected{% endif %}>Rating</option>
+            </select>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Title</th>
+                    <th>Message</th>
+                    <th>Rating</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for message in message_list %}
+                <tr>
+                    <td>{{ message.log_date | date:'d M Y' }}</td>
+                    <td>{{ message.log_date | time:'H:i:s' }}</td>
+                    <td>{{ message.title }}</td>
+                    <td>{{ message.message }}</td>
+                    <td>{{ message.rating }}</td>
+                    <td>
+                        <a href="{% url 'edit' message.id %}">Edit</a>
+                        <a href="{% url 'delete' message.id %}">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
+
+
+

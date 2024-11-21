@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    background: #0b0e14;
+    padding: 25px;
+}
+
+/* Main Content */
+main {
+    width: 100%;
+    max-width: 1350px;
+    margin: 80px auto;
+    padding: 20px;
+    background: rgba(16, 21, 61, 0.5);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    box-shadow: 0 0.5px 0 1px rgba(255, 255, 255, 0.23) inset, 0 1px 0 0 rgba(255, 255, 255, 0.6) inset, 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Form Container */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 30px;
+    background: rgba(16, 21, 61, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+    form label {
+        font-size: 18px;
+        color: #ff1f71;
+        font-weight: bold;
+        margin-bottom: 5px;
+        text-shadow: 0 0 5px rgba(255, 31, 113, 0.6);
+    }
+
+    form input[type="text"],
+    form textarea {
+        width: 100%;
+        padding: 12px;
+        border-radius: 10px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+        box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.2);
+        font-size: 16px;
+        transition: box-shadow 0.3s ease-in-out;
+    }
+
+        form input[type="text"]:focus,
+        form textarea:focus {
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+            outline: none;
+        }
+
+/* Custom button styles */
+.custom-log-button {
+    padding: 15px 20px;
+    background: linear-gradient(45deg, #ff1f71, #2db2ff, #B121FF);
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    text-align: center; /* Ensure text is centered */
+}
+
+    .custom-log-button:hover {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+        background: linear-gradient(45deg, #2db2ff, #ff1f71, #B121FF);
+    }
+
+.custom-cancel-button {
+    padding: 12px 18px; /* Slightly smaller padding */
+    font-size: 16px; /* Slightly smaller font size */
+    background: linear-gradient(45deg, #2db2ff, #ff1f71, #B121FF);
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    text-align: center; /* Ensure text is centered */
+}
+
+    .custom-cancel-button:hover {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+        background: linear-gradient(45deg, #2db2ff, #ff1f71, #B121FF);
+    }
+
+/* Remove underline and set text color for all links */
+a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+/* Delete confirmation message style */
+h2, p {
+    color: #ffffff; /* Set text color to white */
+    text-align: center;
+    margin-bottom: 20px;
+}

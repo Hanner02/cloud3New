@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/search.css">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <div class="container">
+            <div class="btn"><a href="{% url 'home' %}">Home</a></div>
+            <div class="btn"><a href="{% url 'search_films' %}">Search</a></div>
+            <div class="btn"><a href="{% url 'add' %}">Add Review</a></div>
+            <div class="btn"><a href="{% url 'show' %}">Review List</a></div>
+            <div class="btn"><a href="{% url 'view_watchlist' %}">Watchlist</a></div>
+            <div class="btn"><a href="{% url 'login' %}">Log Out</a></div>
+        </div>
+
+        <h1>Search for Films</h1>
+
+        <form method="GET" action="{% url 'search_films' %}" class="search-container">
+            <input type="text" name="q" id="search" class="search-bar" placeholder="Search for a film...">
+        </form>
+
+        <div id="resTable">
+            {% include 'films.html' %}
+        </div>
+        {% load static %}
+        <script src="{% static 'searchJS.js' %}" defer></script>
+    </main>
+</body>
+</html>
+
+

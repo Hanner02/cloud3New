@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'mystyle.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    {% block body %}
+    <main>
+        <div class="container">
+            <div class="btn"><a href="{% url 'home' %}">Home</a></div>
+            <div class="btn"><a href="{% url 'search_films' %}">Search</a></div>
+            <div class="btn"><a href="{% url 'add' %}">Add Review</a></div>
+            <div class="btn"><a href="{% url 'show' %}">Review List</a></div>
+            <div class="btn"><a href="{% url 'view_watchlist' %}">Watchlist</a></div>
+            <div class="btn"><a href="{% url 'login' %}">Log Out</a></div>
+        </div>
+        <section class="content">
+            <header class="site-header">
+                <h1>CineView</h1>
+            </header>
+            <div class="slider-container">
+                <h2>Popular Movies</h2>
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        {% for film in films %}
+                        <div class="swiper-slide">
+                            <a href="{% url 'film_reviews' film.id %}">
+                                <img src="{{ film.image_url }}" alt="{{ film.title }}" />
+                                <div class="slide-overlay">
+                                    <h3>{{ film.title }}</h3>
+                                    <button>
+                                        <a href="{% url 'add' %}?title={{ film.title }}">
+                                            Review Now <i class="fa-solid fa-circle-play"></i>
+                                        </a>
+                                    </button>
+                                </div>
+                        </div>
+
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <h2>We use cookies to enhance your experience on CineView.</h2>
+        <p>By continuing to use this site, you agree to our use of cookies.</p>
+        <a href="{% url 'set_cookie' %}">
+            <button class="button">Accept Cookies</button>
+        </a>
+    </main>
+    {% endblock %}
+</body>
+</html>
+
+

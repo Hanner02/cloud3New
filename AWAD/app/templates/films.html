@@ -1,0 +1,13 @@
+
+<div class="film-list">
+    {% for film in films %}
+    <div class="film-item">
+        <a href="{% url 'add' %}?title={{ film.title }}">
+            <a href="{% url 'film_reviews' film.id %}">
+                <img src="{{ film.image_url }}" alt="{{ film.title }}">
+                <h3>{{ film.title }}</h3>
+            </a>
+            <p>{{ film.description }}</p>
+</div>
+    {% endfor %}
+</div>

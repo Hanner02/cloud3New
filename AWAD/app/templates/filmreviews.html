@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/filmreviews.css">
+    <title>Reviews for {{ film.title }}</title>
+</head>
+<body>
+    <main>
+        <div class="container">
+            <div class="btn"><a href="{% url 'home' %}">Home</a></div>
+            <div class="btn"><a href="{% url 'search_films' %}">Search</a></div>
+            <div class="btn"><a href="{% url 'add' %}">Add Review</a></div>
+            <div class="btn"><a href="{% url 'reviewlist' %}">Your Reviews</a></div>
+            <div class="btn"><a href="{% url 'view_watchlist' %}">Watchlist</a></div>
+            <div class="btn"><a href="{% url 'login' %}">Log Out</a></div>
+        </div>
+        <h1>{{ film.title }}</h1>
+        <img src="{{ film.image_url }}" alt="{{ film.title }}">
+        <p>{{ film.description }}</p>
+
+        {% if user.is_authenticated %}
+        {% if in_watchlist %}
+        <br />
+        <button>
+            <a href="{% url 'remove_from_watchlist' film.id %}" class="btn btn-warning">Remove from Watchlist</a>
+        </button>
+        {% else %}
+        <br />
+        <button>
+            <a href="{% url 'add_to_watchlist' film.id %}" class="btn btn-primary">Add to Watchlist</a>
+        </button>
+            {% endif %}
+            {% endif %}
+
+            <section class="reviews">
+                <h2>Reviews</h2>
+                <ul>
+                    {% for log in log_messages %}
+                    <li>
+                        <strong>{{ log.title }}</strong>: {{ log.message }}
+                        <span>Rating: {{ log.rating }}</span>
+                        <span>{{ log.log_date|date:"d M Y H:i" }}</span>
+                    </li>
+                    <button>
+                        <a href="{% url 'add' %}?title={{ film.title }}">
+                            Review Again <i class="fa-solid fa-circle-play"></i>
+                        </a>
+                    </button>
+                    {% empty %}
+                    <p>No reviews yet. Be the first to review this film!</p>
+                    <button>
+                        <a href="{% url 'add' %}?title={{ film.title }}">
+                            Review Now <i class="fa-solid fa-circle-play"></i>
+                        </a>
+                    </button>
+                    {% endfor %}
+                </ul>
+            </section>
+    </main>
+</body>
+</html>
